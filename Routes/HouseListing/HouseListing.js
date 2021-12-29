@@ -15,14 +15,15 @@ cloudinary.config({
   });
 
 
-  mongoose.connect(mongoURI, { useUnifiedTopology:true}, (error) =>{
-
-    if(error){
-        return console.log(error);
-    }
-    return console.log("connection to database is successful");
-
-  })
+  mongoose.connect(mongoURI, {
+    useNewUrlParser: true,
+    useCreateIndex:true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+ })
+ .then(()=>{
+    console.log('con to db established')
+ })
 
   
 router.post('/api/house-listing', (request,response) => {
